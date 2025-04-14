@@ -14,13 +14,5 @@ public class Restaurant {
     private Map<String, MenuItem> menu;
     private int currentOrders;
     private int maxNoOfOrders;
-    private double rating;  
-
-    public double getRating() {
-        return this.rating;
-    }
-
-    public String getRestaurantId() {
-        return this.restaurantId;
-    }
+    private double rating;
 }

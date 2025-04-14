@@ -2,7 +2,9 @@ package com.example.foodordering.service.strategy;
 
 import com.example.foodordering.model.enums.StrategyType;
 import com.example.foodordering.model.Restaurant;
+import org.springframework.stereotype.Service;
 
+@Service 
 public class StrategyFactory {
 
     public SelectionStrategy getStrategy(StrategyType strategyType) {
