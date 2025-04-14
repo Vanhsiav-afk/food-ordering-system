@@ -1,14 +1,26 @@
 package com.example.foodordering.model;
 
-import lombok.Data;
-import java.util.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.Map;
+
+@Getter
+@Setter
 public class Restaurant {
-    private String name;
-    private double rating;
-    private int maxNoOfOrders;
-    private int currentOrders;
-    private Map<String, MenuItem> menu = new HashMap<>();
-}
 
+    private String restaurantId;
+    private String name;
+    private Map<String, MenuItem> menu;
+    private int currentOrders;
+    private int maxNoOfOrders;
+    private double rating;  
+
+    public double getRating() {
+        return this.rating;
+    }
+
+    public String getRestaurantId() {
+        return this.restaurantId;
+    }
+}

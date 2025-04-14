@@ -1,36 +1,29 @@
 package com.example.foodordering.service;
 
 import com.example.foodordering.exception.InvalidInputException;
-import com.example.foodordering.model.MenuItem;
 import com.example.foodordering.model.Restaurant;
-import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-@Getter
 public class RestaurantService {
 
     private final Map<String, Restaurant> restaurantMap = new HashMap<>();
 
-    public void onboardRestaurant(Restaurant restaurant) {
-        if (restaurant == null || restaurant.getName() == null || restaurant.getName().isEmpty()) {
-            throw new InvalidInputException("Invalid restaurant details");
+    public Restaurant addRestaurant(Restaurant restaurant) {
+        if (restaurantMap.containsKey(restaurant.getRestaurantId())) {
+            throw new InvalidInputException("Restaurant with this ID already exists.");
         }
-        restaurantMap.put(restaurant.getName(), restaurant);
+        restaurantMap.put(restaurant.getRestaurantId(), restaurant);
+        return restaurant;
     }
 
-    public void addOrUpdateMenu(String restaurantName, MenuItem item, boolean isUpdate) {
-        Restaurant restaurant = restaurantMap.get(restaurantName);
-        if (restaurant == null) throw new InvalidInputException("Restaurant not found");
+    public List<Restaurant> getAllRestaurants() {
+        return new ArrayList<>(restaurantMap.values());
+    }
 
-        if (isUpdate) {
-            if (!restaurant.getMenu().containsKey(item.getName())) {
-                throw new InvalidInputException("Cannot update non-existing menu item");
-            }
-        }
-
-        restaurant.getMenu().put(item.getName(), item); // Add or update
+    public Map<String, Restaurant> getRestaurantMap() {
+        return restaurantMap;
     }
 }

@@ -1,10 +1,12 @@
 package com.example.foodordering.controller;
 
-import com.example.foodordering.model.MenuItem;
 import com.example.foodordering.model.Restaurant;
 import com.example.foodordering.service.RestaurantService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/restaurants")

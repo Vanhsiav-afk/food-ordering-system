@@ -1,22 +1,29 @@
 package com.example.foodordering.model;
 
 import com.example.foodordering.model.enums.OrderStatus;
-import lombok.Data;
+import com.example.foodordering.model.enums.StrategyType;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Map;
-import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 public class Order {
+
     private String orderId;
     private String userName;
-    private Map<String, Integer> items; // itemName -> quantity
-    private OrderStatus status;
+    private Map<String, Integer> items;
     private Restaurant assignedRestaurant;
     private int totalCost;
+    private OrderStatus status;
+    private StrategyType strategyType;  // Add this line
 
-    public Order() {
-        this.orderId = UUID.randomUUID().toString();
-        this.status = OrderStatus.ACCEPTED;
+    public void setStrategyType(StrategyType strategyType) {
+        this.strategyType = strategyType;
+    }
+
+    public StrategyType getStrategyType() {
+        return this.strategyType;
     }
 }

@@ -1,12 +1,12 @@
 package com.example.foodordering.controller;
 
 import com.example.foodordering.model.Order;
-import com.example.foodordering.model.enums.StrategyType;
 import com.example.foodordering.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
@@ -24,5 +24,10 @@ public class OrderController {
     public ResponseEntity<List<Order>> getAllOrders() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
-}
 
+    @PostMapping("/{orderId}/complete")
+    public ResponseEntity<String> completeOrder(@PathVariable String orderId) {
+        orderService.markOrderAsCompleted(orderId);
+        return ResponseEntity.ok("Order marked as completed");
+    }
+}

@@ -1,13 +1,13 @@
-package com.example.Food.Ordering.System;
+package com.example.foodorderingsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class FoodOrderingSystemApplicationTests {
+@SpringBootTest(classes = FoodOrderingSystemApplication.class) 
+public class FoodOrderingSystemApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+       
+    }
 }
